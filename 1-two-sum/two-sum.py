@@ -5,10 +5,19 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        for i in range(len(nums)):
+        seen={}
+        for i,num in enumerate(nums):
             diff=target-nums[i]
-            if(diff in nums and nums.index(diff)!= i):
-                return i,nums.index(diff)
+            if(diff in seen):
+                return seen[diff],i
+            seen[num]=i
+
+
+
+        # for i in range(len(nums)):
+        #     diff=target-nums[i]
+        #     if(diff in nums and nums.index(diff)!= i):
+        #         return i,nums.index(diff)
 
 
 
