@@ -3,15 +3,25 @@ class Solution(object):
         """
         :type nums: List[int]
         :rtype: int
-        """
-        seen = set()  # To track unique elements
-        write_index = 0  # Tracks position to overwrite in nums
+        # """
+        if not nums:
+            return 0
+        write=1
+        for i in range(1,len(nums)):
+            if(nums[i]!=nums[write-1]):
+                nums[write]=nums[i]
+                write+=1
+        return write
 
-        for num in nums:
-            if num not in seen:
-                seen.add(num)
-                nums[write_index] = num  # Place the unique number at the current index
-                write_index += 1
 
-        # nums is now modified in-place to contain only unique elements
-        return write_index  # Length of the modified list of unique elements
+
+
+        # seen=set()
+        # write=0
+        # for i in range(len(nums)):
+        #     if(nums[i] not in seen):
+        #         seen.add(nums[i])
+        #         nums[write]=nums[i]
+        #         write+=1
+        # return write
+
