@@ -6,6 +6,16 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
         # for i in range(k):
+        #     element=nums.pop()
+        #     nums.insert(0,element)
+        # return nums
+
+        
+
+
+
+
+        # for i in range(k):
         # #    element=nums.pop()
         # #    nums.insert(0,element)
         # nums.insert(0,nums.pop())
