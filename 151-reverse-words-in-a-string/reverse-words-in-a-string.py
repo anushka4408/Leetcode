@@ -6,4 +6,5 @@ class Solution(object):
         """
         s=s.strip()
         liststring=s.split()
-        return ' '.join(liststring[::-1])
+        return ' '.join((s.strip()).split()[::-1])
+        # return ' '.join(liststring[::-1])
