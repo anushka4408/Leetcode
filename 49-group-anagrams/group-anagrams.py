@@ -4,14 +4,37 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        dictionary={}
-        for word in strs:
-    
-            sortedword=''.join(sorted(word))
-            if(sortedword in dictionary):
-                dictionary[sortedword].append(word)
+        dict={}
+        for i in strs:
+            sortedw=''.join(sorted(i))
+            if(sortedw in dict):
+                dict[sortedw].append(i)
             else:
-                dictionary[sortedword]=[word]
-        return dictionary.values()
+                dict[sortedw]=[i]
+        return dict.values()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # dictionary={}
+        # for word in strs:
+    
+        #     sortedword=''.join(sorted(word))
+        #     if(sortedword in dictionary):
+        #         dictionary[sortedword].append(word)
+        #     else:
+        #         dictionary[sortedword]=[word]
+        # return dictionary.values()
 
         
