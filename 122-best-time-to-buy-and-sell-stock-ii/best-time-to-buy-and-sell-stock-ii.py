@@ -4,12 +4,20 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         # """
-        # profit=0
-        # for i in range(len(prices)):
-        #     for j in range(i+1,len(prices)):
-        #         if(prices[j]<prices[i]):
-        #             profit+=prices[j]-profit[i]
-
+        n=len(prices)
+        dp=[[-1]*2 for i in range(n)]
+        def f(i,canBuy):
+            if i==n:
+                return 0
+            if dp[i][canBuy]!=-1:
+                return dp[i][canBuy]
+            if canBuy==True:
+                dp[i][canBuy]=max(-prices[i]+f(i+1,False),f(i+1,True))
+            else:
+                dp[i][canBuy]=max(prices[i]+f(i+1,True),f(i+1,False))
+    
+            return dp[i][canBuy] 
+        return f(0,True)#f(i==0 , canBuy=True)
 
 
 
