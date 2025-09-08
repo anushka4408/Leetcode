@@ -12,11 +12,23 @@ class Solution(object):
         :rtype: int
         """
         stack=[]
-        def inorder(root):
-            if not root:
-                return []
-            return inorder(root.left)+[root.val]+inorder(root.right)
-        stack=inorder(root)
-        print(stack)
-        return stack[k-1]
+        while k!=0:
+            while root!= None:  #Append all the left child
+                stack.append(root)
+                root=root.left
+            root=stack.pop()  #take last leftchild
+            k-=1
+            if(k==0):
+                return root.val
+            root=root.right #check with the right element.
+
+
+        # stack=[]
+        # def inorder(root):
+        #     if not root:
+        #         return []
+        #     return inorder(root.left)+[root.val]+inorder(root.right)
+        # stack=inorder(root)
+        # print(stack)
+        # return stack[k-1]
         
