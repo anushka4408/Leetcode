@@ -10,21 +10,37 @@ class Solution(object):
         :type preorder: List[int]
         :type inorder: List[int]
         :rtype: Optional[TreeNode]
-        """
-        if not preorder:
-            return None
-        rootval=preorder[0]
-        root=TreeNode(rootval)
+        # """
+        inordermap={val:idx for idx,val in enumerate(inorder)}
+        self.preorderindex=0
+        def helper(inleft,inright):
+            if(inleft>inright):
+                return None
 
-        indx=inorder.index(rootval)
+            rootval=preorder[self.preorderindex]
+            root=TreeNode(rootval)
+            self.preorderindex+=1
+            index=inordermap[rootval]
+            root.left=helper(inleft,index-1)
+            root.right=helper(index+1,inright)
+            return root
+        return helper(0,len(inorder)-1)
 
-        leftinorder=inorder[:indx]
-        rightinorder=inorder[indx+1:]
-        leftsize=len(leftinorder)
 
-        leftpreorder=preorder[1:leftsize+1]
-        rightpreorder=preorder[leftsize+1:]
+        # if not preorder:
+        #     return None
+        # rootval=preorder[0]
+        # root=TreeNode(rootval)
 
-        root.left=self.buildTree(leftpreorder,leftinorder)
-        root.right=self.buildTree(rightpreorder,rightinorder)
-        return root
+        # indx=inorder.index(rootval)
+
+        # leftinorder=inorder[:indx]
+        # rightinorder=inorder[indx+1:]
+        # leftsize=len(leftinorder)
+
+        # leftpreorder=preorder[1:leftsize+1]
+        # rightpreorder=preorder[leftsize+1:]
+
+        # root.left=self.buildTree(leftpreorder,leftinorder)
+        # root.right=self.buildTree(rightpreorder,rightinorder)
+        # return root
