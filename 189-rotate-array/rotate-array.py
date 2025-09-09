@@ -4,65 +4,67 @@ class Solution(object):
         :type nums: List[int]
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
-        """
+        # """
         n=len(nums)
-        k%=n
-        def reverse(left,right):
-            while left<right:
-                nums[left],nums[right]=nums[right],nums[left]
-                left+=1
-                right-=1
-        reverse(0,n-1)
-        reverse(0,k-1)
-        reverse(k,n-1)
-        return nums
-
-
-
-
-
-        # for i in range(k):
-        #     element=nums.pop()
-        #     nums.insert(0,element)
+        def rotate(nums,start,end):
+            while start<=end:
+                nums[start],nums[end]=nums[end],nums[start]
+                start+=1
+                end-=1
+            return nums
+        k%=len(nums)
+        nums=rotate(nums,0,n-1)
+        nums=rotate(nums,0,k-1)
+        nums=rotate(nums,k,n-1)
         # return nums
+        
+            
 
 
 
 
 
 
-        # for i in range(k):
-        # #    element=nums.pop()
-        # #    nums.insert(0,element)
-        # nums.insert(0,nums.pop())
-        # return nums
 
-        # def reverse(nums,start,end):
-        #     # reverse by swapping the start and end position
-        #     while start<end:
-        #         nums[start],nums[end]=nums[end],nums[start]
-        #         # nums[start]=temp
-        #         # nums[start]=nums[end]
-        #         # nums[end]=temp
-        #         start+=1
-        #         end-=1
-        #     return nums
 
-        # k%=len(nums)
-        # # first reverse the whole list =[7,6,5,4,3,2,1]
-        # nums=reverse(nums,0,len(nums)-1)
+        # # for i in range(k):
+        # #     element=nums.pop()
+        # #     nums.insert(0,element)
+        # # return nums
 
-        # # reverse first k elements=[5,6,7,4,3,2,1]
-        # nums=reverse(nums,0,k-1)
 
-        # #reverse last elements=[5,6,7,,,1,2,3,4]
-        # nums=reverse(nums,k,len(nums)-1)
+
+
+
+
+       
+
+        # # def reverse(nums,start,end):
+        # #     # reverse by swapping the start and end position
+        # #     while start<end:
+        # #         nums[start],nums[end]=nums[end],nums[start]
+        # #         # nums[start]=temp
+        # #         # nums[start]=nums[end]
+        # #         # nums[end]=temp
+        # #         start+=1
+        # #         end-=1
+        # #     return nums
+
+        # # k%=len(nums)
+        # # # first reverse the whole list =[7,6,5,4,3,2,1]
+        # # nums=reverse(nums,0,len(nums)-1)
+
+        # # # reverse first k elements=[5,6,7,4,3,2,1]
+        # # nums=reverse(nums,0,k-1)
+
+        # # #reverse last elements=[5,6,7,,,1,2,3,4]
+        # # nums=reverse(nums,k,len(nums)-1)
         
 
-        k =k % len(nums)
-        r= len(nums)-k
-        new = nums[0:r] #[1,2,3,4]
-        nums[0:r] =[] #[5,6,7]
-        nums.extend(new) #[5,6,7,1,2,3,4]
+        # k =k % len(nums)
+        # r= len(nums)-k
+        # new = nums[0:r] #[1,2,3,4]
+        # nums[0:r] =[] #[5,6,7]
+        # nums.extend(new) #[5,6,7,1,2,3,4]
         
         
