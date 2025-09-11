@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: int
         """
         n=len(coins)
-        dp=[[-1 for i in range(amount+1) ]for j in range(n+1)]
+        dp=[[-1 for i in range(amount+1) ] for j in range(n+1)]
         def mincoins(coins,n,amount,s):
             if s==amount:
                 return 0
