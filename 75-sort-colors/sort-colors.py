@@ -15,11 +15,11 @@ class Solution(object):
         # return nums
 
         # BUBBLE SORT
-        for i in range(len(nums)):
-            for j in range(0,len(nums)-i-1):
-                if(nums[j]>nums[j+1]):
-                    nums[j],nums[j+1]=nums[j+1],nums[j]       
-        return nums
+        # for i in range(len(nums)):
+        #     for j in range(0,len(nums)-i-1):
+        #         if(nums[j]>nums[j+1]):
+        #             nums[j],nums[j+1]=nums[j+1],nums[j]       
+        # return nums
 # Bubble sort is stable (doesn’t change order of equal elements).
 
 # Time Complexity: O(n²)
@@ -30,7 +30,7 @@ class Solution(object):
         for i in range(1,len(nums)):
             key=nums[i]
             j=i-1
-            while j>0 and nums[j]>nums[key]:
+            while j>=0 and nums[j]>key:
                 nums[j+1]=nums[j]
                 j-=1
             nums[j+1]=key
