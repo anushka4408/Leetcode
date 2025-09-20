@@ -5,23 +5,33 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        closest=float('inf')
         nums.sort()
-        for i in range(len(nums)-2):
+        n=len(nums)
+        closest=float('inf')
+        for i in range(n-2):
+            if(i>0 and nums[i]==nums[i-1]):
+                continue
             left=i+1
-            right=len(nums)-1
+            right=n-1
             while left<right:
-                currentsum=nums[i]+nums[left]+nums[right]
-                if(abs(currentsum-target)<abs(closest-target)):
-                    closest=currentsum
-                if(currentsum>target):
-                    right-=1
-                elif(currentsum<target):
+                total=nums[i]+nums[left]+nums[right]
+                if(abs(total-target)<closest):
+                    closest=abs(total-target)
+                    ans=total
+                    # while left<right and nums[left]==nums[left+1]:
+                    #     left+=1
+                    # while left<right and nums[right]==nums[right-1]:
+                    #     right-=1
+                    # left+=1
+                    # right-=1
+                elif total<target:
                     left+=1
+                elif total>target:
+                    right-=1
                 else:
-                    return currentsum
-        return closest
-
+                    return total
+        return ans
+                
 
 
 
