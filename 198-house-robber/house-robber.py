@@ -4,18 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if not nums:
-            return 0
-        if len(nums) == 1:
-            return nums[0]
-    
-    # Initialize variables
-        prev2 = 0
-        prev1 = 0
-    
-        for num in nums:
-            current = max(prev1, num + prev2)
-            prev2 = prev1
-            prev1 = current
-    
-        return prev1
+        n=len(nums)
+        dp=[-1]*(n)
+        def robber(n):
+            if(n<0):
+                return 0
+            if(dp[n]!=-1):
+                return dp[n]
+            take=nums[n]+robber(n-2)
+            nottake=robber(n-1)
+            dp[n]=max(take,nottake)
+            return dp[n]
+        return robber(n-1)
+
