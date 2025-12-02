@@ -5,8 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        #1.
+        seen={}
         for i in range(len(nums)):
             diff=target-nums[i]
-            if(diff in nums and nums.index(diff)!=i):
-                return i,nums.index(diff)
+            if(diff in seen):
+                return [i,nums.index(diff)]
+            seen[nums[i]]=diff
+        
