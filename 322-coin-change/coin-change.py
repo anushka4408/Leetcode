@@ -6,24 +6,24 @@ class Solution(object):
         :rtype: int
         """
         n=len(coins)
-        dp=[[-1 for i in range(amount+1) ] for j in range(n+1)]
-        def mincoins(coins,n,amount,s):
-            if s==amount:
+        
+        dp=[[-1 for i in range(amount+1)] for j in range(n+1)]
+        def unbounded(n,amount):
+            if(amount==0):
                 return 0
-            if n==0:
+            if(n==0 and amount>0):
                 return float('inf')
-            if(dp[n][s]!=-1):
-                return dp[n][s]
-            if(s+coins[n-1]<=amount):
-                take=1+mincoins(coins,n,amount,s+coins[n-1])
-                notake=mincoins(coins,n-1,amount,s)
-                dp[n][s]= min(take,notake)
+            if(dp[n][amount]!=-1):
+                return dp[n][amount]
+            nottake=unbounded(n-1,amount)
+            if(coins[n-1]<=amount):
+                take=1+unbounded(n,amount-coins[n-1])
+                dp[n][amount]=min(take,nottake)
             else:
-                dp[n][s]=mincoins(coins,n-1,amount,s)
-            return dp[n][s]
-
-        ans= mincoins(coins,n,amount,0) 
-        if(ans==float('inf')):
-            return -1
-        return ans
+                dp[n][amount]=nottake
+            return dp[n][amount]
+        ans= unbounded(n,amount)
+        return -1 if ans==float('inf') else ans
+            
+            
 
